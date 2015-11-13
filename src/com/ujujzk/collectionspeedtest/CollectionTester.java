@@ -10,6 +10,7 @@ public class CollectionTester implements SpeedTester {
     List<TestMethod> testMethods;
 
     CollectionTester(List<TestMethod> testMethods) {
+        this.testMethods = new ArrayList<>();
         this.testMethods.addAll(testMethods);
     }
 

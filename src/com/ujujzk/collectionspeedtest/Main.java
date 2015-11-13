@@ -19,6 +19,7 @@ public class Main {
         CollectionTester collectionTester = new CollectionTester(testMethods);
         List<SpeedTestResult> speedTestResults = collectionTester.runTests(testingCollections, 1000);
 
+
     }
 
 }

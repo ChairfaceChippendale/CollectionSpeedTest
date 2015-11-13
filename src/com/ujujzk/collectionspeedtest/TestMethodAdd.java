@@ -1,14 +1,14 @@
 package com.ujujzk.collectionspeedtest;
 
-import javafx.print.Collation;
-import javafx.util.Pair;
+import com.ujujzk.collectionspeedtest.testObjects.ObjectService;
+import com.ujujzk.collectionspeedtest.testObjects.TestObjectSmall;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
 
-public class TestMethodAdding implements TestMethod{
+public class TestMethodAdd implements TestMethod{
 
-    private final String testName = "Adding of elements";
+    private String testName = "Elements adding";
 
     @Override
     public String getTestName (){
@@ -22,18 +22,24 @@ public class TestMethodAdding implements TestMethod{
             InvocationTargetException,
             InstantiationException {
 
-        long result = 0;
+        long totalTime = 0;
+        long callTime;
 
         Object collectionObject = collectionClass.getConstructor().newInstance();
         if (collectionObject instanceof Collection) {
+
             Collection collection = (Collection) collectionObject;
+            ObjectService.init(repetitionNumber, TestObjectSmall.class);
             for (int i = 0; i < repetitionNumber; i++) {
-                collection.add(ObjectService.get(i));
+
+                Object obj = ObjectService.get(i);
+                callTime = System.currentTimeMillis();
+                collection.add(obj);
+                callTime = System.currentTimeMillis() - callTime;
+                totalTime += callTime;
             }
         }
 
-
-
-        return result;
+        return totalTime;
     }
 }

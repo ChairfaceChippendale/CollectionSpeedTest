@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
 
 public interface TestMethod {
 
-    long runTest (Class collection, int repetitionNumber) throws NoSuchMethodException,
+    long runTest (Class collection, int repetitionNumber, Class collectionElementClass) throws NoSuchMethodException,
             IllegalAccessException,
             InvocationTargetException,
             InstantiationException;

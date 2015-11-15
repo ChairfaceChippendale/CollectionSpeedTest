@@ -1,6 +1,7 @@
 package com.ujujzk.collectionspeedtest;
 
 import com.ujujzk.collectionspeedtest.testObjects.ObjectService;
+import com.ujujzk.collectionspeedtest.testObjects.TestObjectMiddle;
 import com.ujujzk.collectionspeedtest.testObjects.TestObjectSmall;
 
 import java.lang.reflect.InvocationTargetException;
@@ -11,7 +12,7 @@ public class TestMethodClear implements TestMethod {
     private String testName = "All elements removing";
 
     @Override
-    public long runTest(Class collectionClass, int repetitionNumber)
+    public long runTest(Class collectionClass, int repetitionNumber, Class collectionElementClass)
             throws NoSuchMethodException,
             IllegalAccessException,
             InvocationTargetException,
@@ -23,7 +24,7 @@ public class TestMethodClear implements TestMethod {
         if (collectionObject instanceof Collection) {
 
             Collection collection = (Collection) collectionObject;
-            ObjectService.init(repetitionNumber, TestObjectSmall.class);
+            ObjectService.init(repetitionNumber, collectionElementClass);
             collection.addAll(ObjectService.getAll());
 
             totalTime = System.currentTimeMillis();

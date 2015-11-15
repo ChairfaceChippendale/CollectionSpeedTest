@@ -1,5 +1,8 @@
 package com.ujujzk.collectionspeedtest;
 
+import com.ujujzk.collectionspeedtest.testObjects.TestObjectMiddle;
+import com.ujujzk.collectionspeedtest.testObjects.TestObjectSmall;
+
 import java.util.*;
 
 public class Main {
@@ -17,9 +20,15 @@ public class Main {
         testingCollections.add( (new HashSet<>()).getClass() );
 
         CollectionTester collectionTester = new CollectionTester(testMethods);
-        List<SpeedTestResult> speedTestResults = collectionTester.runTests(testingCollections, 1000);
+
+        List<SpeedTestResult> speedTestResults = collectionTester.runTests(testingCollections, 10000, TestObjectSmall.class);
 
 
+        for (SpeedTestResult speedTestResult: speedTestResults) {
+
+                System.out.println(speedTestResult.getCollection() + "\n" + speedTestResult.getSpeedResults());
+
+        }
     }
 
 }

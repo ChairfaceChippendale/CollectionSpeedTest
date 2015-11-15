@@ -25,4 +25,13 @@ public class SpeedTestResult {
     public void addSpeedResult(Pair methodAndResult) {
         speedResults.put((String)methodAndResult.getKey(), (Long)methodAndResult.getValue());
     }
+
+
+    public Class getCollection () {
+        return collection;
+    }
+
+    public Map<String, Long> getSpeedResults() {
+        return speedResults;
+    }
 }

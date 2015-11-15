@@ -16,7 +16,7 @@ public class CollectionTester implements SpeedTester {
 
     @Override
     public List<SpeedTestResult> runTests(Collection<Class> collections,
-                                         int repetitionNumber) {
+                                         int repetitionNumber, Class collectionElementClass) {
 
         List<SpeedTestResult> speedTestResults = new ArrayList<>();
 
@@ -29,7 +29,7 @@ public class CollectionTester implements SpeedTester {
 
                 try {
 
-                    speedTestResult.addSpeedResult(testMethod.getTestName(), testMethod.runTest(clazz, repetitionNumber));
+                    speedTestResult.addSpeedResult(testMethod.getTestName(), testMethod.runTest(clazz, repetitionNumber, collectionElementClass));
 
                 } catch (NoSuchMethodException e){
                     e.printStackTrace();
